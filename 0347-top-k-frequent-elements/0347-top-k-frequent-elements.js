@@ -4,8 +4,6 @@
  * @return {number[]}
  */
 var topKFrequent = function(nums, k) {
-    // if nums.length === 1 || nums.length === 2 return nums
-    
     // loop through array and make hash map of all numbers and freq in key value
     let hashMap = {}
     
