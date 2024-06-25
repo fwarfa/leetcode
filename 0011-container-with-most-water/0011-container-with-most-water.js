@@ -3,20 +3,19 @@
  * @return {number}
  */
 var maxArea = function(height) {
-    // area of rect is a = w * h
+    // 2 pointer solution
+    let max = 0
     let left = 0
     let right = height.length - 1
-    let res = 0
     
     while (left < right) {
-        let area = (right -left) * Math.min(height[right], height[left])
-        res = Math.max(res, area)
-        
         if (height[left] < height[right]) {
-            left += 1
+            max = Math.max(max, height[left] * (right - left))
+            left++
         } else {
-            right -= 1
-        } 
+            max = Math.max(max, height[right] * (right - left))
+            right--
+        }
     }
-    return res
+    return max
 };
