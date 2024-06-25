@@ -3,23 +3,22 @@
  * @return {number}
  */
 var maxProfit = function(prices) {
-    // left and right pointers
-    // loop until right goes to the length of array
-    // check if right > left
-        // if it is we subtract and compare to max
-        // if it is not we move left to be right and move right up
-    let left = 0
-    let right = 1
-    let maxProfit = 0
+    // 2 pointer solution
+    // max var
+    // starts from 0 and 1
+    // if right is greater do a compare of what was previously  in max
+    let max = 0
+    let l = 0
+    let r = 1
     
-    while (right < prices.length) {
-        if (prices[left] < prices[right]) {
-            maxProfit = Math.max(maxProfit, prices[right] - prices[left])
-            right++
+    while (r < prices.length) {
+        if (prices[r] < prices[l]) {
+            l = r
+            r++
         } else {
-            left = right
-            right ++
+            max = Math.max(max, prices[r] - prices[l])
+            r++
         }
     }
-    return maxProfit
+    return max
 };
