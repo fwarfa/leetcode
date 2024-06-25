@@ -4,16 +4,17 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-    // hash map (object)
-    // loop, for each idx, check if tgt - curr idx ansr is already in hash
-    // if it is we return if not we store curr idx and value
-    let hMap = {}
+    // simple hash map solution
+    // add all numbers to hash
+    let map = {}
+    
     for (let i = 0; i < nums.length; i++) {
-        let diff = target - nums[i] 
-        if (diff in hMap) {
-            return [i, hMap[diff]]
+        let temp = target - nums[i]
+        
+        if (temp in map) {
+            return [i, map[temp]]
         } else {
-            hMap[nums[i]] = i
+            map[nums[i]] = i
         }
     }
 };
