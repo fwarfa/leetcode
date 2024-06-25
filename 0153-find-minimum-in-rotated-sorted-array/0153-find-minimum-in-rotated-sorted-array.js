@@ -3,20 +3,23 @@
  * @return {number}
  */
 var findMin = function(nums) {
-    if (nums.length === 0) return undefined
-    if (nums.length === 1) return nums[0]
-    
+    // binary search approach
+    // while loop while middle !== left or right
+    // find middle and compare to right
+        // if right is greater we no min is in right side
+            // move left pointer to be middle + 1
+        // else move right to be middle
     let left = 0
     let right = nums.length - 1
     
     while (left < right) {
-        let midpoint = Math.floor((left + right) / 2)
+        let m = Math.floor((right + left) / 2)
         
-        if (nums[midpoint] > nums[right]) {
-            left = midpoint + 1
+        if (nums[right] < nums[m]) {
+            left = m + 1
         } else {
-            right = midpoint
+            right = m
         }
-    }
-    return nums[left]
+    } 
+    return nums[right]
 };
